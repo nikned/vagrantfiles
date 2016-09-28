@@ -19,7 +19,12 @@
              chdir=/home/vagrant/IBM/InstallationManager/eclipse
              creates=/home/vagrant/IBM/WebSphere/AppServer/bin/manageprofiles.sh
 
-    - name: install WAS 8.5
+    - name: register user for WAS portal 8.5 repository
+      shell: . /vagrant/was8_5_install/ibm_user.sh; tools/imutilsc saveCredential -userName ${IBM_USER} -userPassword ${IBM_PWD} -url http://www.ibm.com/software/repositorymanager/com.ibm.websphere.PORTAL.SERVER.v85/repository.config
+                 chdir=/home/vagrant/IBM/InstallationManager/eclipse
+                 creates=/home/vagrant/IBM/WebSphere/Portal/bin/startPortal.sh
+
+    - name: install WAS AND PORTAL 8.5
       shell: ./IBMIM -s -sP -acceptLicense -input /vagrant/was8_5_install/IBMIM.install_was85.record
              chdir=/home/vagrant/IBM/InstallationManager/eclipse
              creates=/home/vagrant/IBM/WebSphere/AppServer/bin/manageprofiles.sh

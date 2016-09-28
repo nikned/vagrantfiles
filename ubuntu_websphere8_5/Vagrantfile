@@ -6,13 +6,14 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Every Vagrant virtual environment requires a box to build off of.
-    config.vm.box = "ubuntu_14.04_cloud_amd64"
+    config.vm.box = "bento/ubuntu-14.04"
+    #config.vm.box ="llamerr/lubuntu-1210-desktop"
     config.vm.hostname = "ubuntu-was8"
     
     config.vm.provider :virtualbox do |virtualbox|
-#	    virtualbox.gui = true
+	    #virtualbox.gui = true
         virtualbox.customize ["modifyvm", :id, "--memory", "1024"]
-        virtualbox.customize ["modifyvm", :id, "--cpus", "1"]
+        virtualbox.customize ["modifyvm", :id, "--cpus", "2"]
         virtualbox.customize ["modifyvm", :id, "--ioapic", "on"]
 		virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
         # set timesync parameters to keep the clocks better in sync
@@ -35,6 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # private network (host_only) für IP Verbindung
     config.vm.network "private_network", type: "dhcp"
+    config.vm.network "private_network", ip: "192.168.33.113"
 
     # Use rbconfig to determine if we're on a windows host or not.
     require 'rbconfig'

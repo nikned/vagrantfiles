@@ -5,6 +5,7 @@
   </variables>
   <server>
     <repository location='http://www.ibm.com/software/repositorymanager/V85WASDeveloperILANL'/>
+    <repository location ='http://www.ibm.com/software/repositorymanager/com.ibm.websphere.PORTAL.SERVER.v85'/>
   </server>
   <profile id='IBM HTTP Server V8.5' installLocation='/home/vagrant/IBM/HTTPServer'>
     <data key='cic.selector.arch' value='x86'/>
@@ -33,12 +34,43 @@
     <!-- Web Server Plug-ins for IBM WebSphere Application Server (ILAN) 8.5.5.6 -->
     <offering profile='Web Server Plug-ins for IBM WebSphere Application Server V8.5' id='com.ibm.websphere.PLGILAN.v85' version='8.5.5006.20150529_0536' features='core.feature,com.ibm.jre.6_64bit'/>
   </install>
+
+   <profile id='IBM WebSphere Portal Server V8.5' installLocation='/home/vagrant/IBM/WebSphere/Portal'>
+      <data key='cic.selector.arch' value='x86'/>
+      <data key='user.wp.custom.contextroot,com.ibm.websphere.PORTAL.SERVER.v85' value='new_context_root'/>
+          <data key='user.wp.custom.defaulthome,com.ibm.websphere.PORTAL.SERVER.v85' value='new_default_home'/>
+          <data key='user.wp.custom.personalhome,com.ibm.websphere.PORTAL.SERVER.v85' value='new_personal_home'/>
+          <data key='user.wp.uri.values.changed,com.ibm.websphere.PORTAL.SERVER.v85' value='true'/>
+          <data key='user.profile.config.mode,com.ibm.websphere.PORTAL.SERVER.v85' value='standard'/>
+          <data key='user.wp.install.type,com.ibm.websphere.PORTAL.SERVER.v85' value='full'/>
+          <data key='user.wp.cellname,com.ibm.websphere.PORTAL.SERVER.v85' value='myCell'/>
+          <data key='user.wp.nodename,com.ibm.websphere.PORTAL.SERVER.v85' value='myNode'/>
+          <data key='user.wp.userid,com.ibm.websphere.PORTAL.SERVER.v85' value='wpadmin'/>
+          <data key='user.wp.password,com.ibm.websphere.PORTAL.SERVER.v85' value='+UJo1zXuoCgga8e31XvMog=='/>
+          <data key='user.wp.admin.port,com.ibm.websphere.PORTAL.SERVER.v85' value='10000'/>
+          <data key='user.wp.portal.port,com.ibm.websphere.PORTAL.SERVER.v85' value='10025'/>
+          <data key='user.wp.profilepath,com.ibm.websphere.PORTAL.SERVER.v85' value='/opt/IBM/WebSphere/wp_profile'/>
+          <data key='user.wp.forward.profilepath,com.ibm.websphere.PORTAL.SERVER.v85' value='/opt/IBM/WebSphere/wp_profile'/>
+          <data key='user.wp.custom.templates.path,com.ibm.websphere.PORTAL.SERVER.v85' value='/opt/IBM/WebSphere/wp_profile'/>
+    </profile>
+   <install>
+      <!-- WebSphere Portal server 8.5.5.6 -->
+
+  <offering profile = 'IBM WebSphere Portal Server V8.5' id='com.ibm.websphere.PORTAL.SERVER.v85'
+  features='ce.install,portal.binary,portal.profile' installFixes="none"/>
+  </install>
+
+
+
   <profile id='WebSphere Customization Toolbox V8.5' installLocation='/home/vagrant/IBM/WebSphere/Toolbox'>
     <data key='cic.selector.arch' value='x86'/>
+
   </profile>
   <install>
     <!-- WebSphere Customization Toolbox (ILAN) 8.5.5.6 -->
     <offering profile='WebSphere Customization Toolbox V8.5' id='com.ibm.websphere.WCTILAN.v85' version='8.5.5006.20150529_0536' features='core.feature,pct,zpmt,zmmt'/>
   </install>
   <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='${sharedLocation}'/>
+  <!--preference name= 'PassportAdvantageIsEnabled' value ='true'--/>
+
 </agent-input>

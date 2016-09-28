@@ -5,6 +5,8 @@
   </variables>
   <server>
     <repository location='http://www.ibm.com/software/repositorymanager/V85WASDeveloperILANL'/>
+    <repository location = 'http://www.ibm.com/software/repositorymanager/com.ibm.websphere.PORTAL.SERVER.v85'/>
   </server>
   <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='${sharedLocation}'/>
+
 </agent-input>
